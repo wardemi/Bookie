@@ -1,3 +1,16 @@
 <resources>
     <string name="app_name">Bookie</string>
+    <string name="hint_email">E-mail cím</string>
+    <string name="hint_password">Jelszó</string>
+    <string name="login_title">Bookie Belépés</string>
+    <string name="login_btn">Belépés</string>
+    <string name="invalid_form">Az adatok nem helyesen lettek megadva</string>
+    <string name="registration_btn">Regisztráció</string>
+    <string name="auth_failed">Nem sikerült a beléptetés</string>
+    <string name="auth_reg_success">Sikeres regisztráció</string>
+    <string name="auth_reg_failed">Nem sikerült a regisztráció</string>
+    <string name="auth_success">Sikeres belépés</string>
+    <string name="sign_out">Kilépés</string>
+    <string name="google_fail_connect">Google Nem Kommunikál</string>
+
 </resources>
