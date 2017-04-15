@@ -9,6 +9,8 @@ import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.zxing.integration.android.IntentIntegrator;
+import com.google.zxing.integration.android.IntentResult;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -42,6 +44,36 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(goToLogin);
             }
         });
+
+        Button scanBtn = (Button) findViewById(R.id.scanBtn);
+        scanBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+//                new IntentIntegrator(MainActivity.this).initiateScan(); // `this` is the current Activity
+
+                IntentIntegrator integrator = new IntentIntegrator(MainActivity.this);
+                integrator.setOrientationLocked(false);
+                integrator.setTimeout(8000);
+                integrator.initiateScan();
+
+            }
+        });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
+        if(result != null) {
+            if(result.getContents() == null) {
+                Toast.makeText(MainActivity.this, "Cancelled", Toast.LENGTH_LONG).show();
+            } else {
+                Toast.makeText(MainActivity.this, "Scanned: " + result.getContents(), Toast.LENGTH_LONG).show();
+                //TODO call moly.hu api etc...
+            }
+        } else {
+            super.onActivityResult(requestCode, resultCode, data);
+        }
     }
 
 }

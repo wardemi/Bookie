@@ -12,5 +12,6 @@
     <string name="auth_success">Sikeres belépés</string>
     <string name="sign_out">Kilépés</string>
     <string name="google_fail_connect">Google Nem Kommunikál</string>
+    <string name="scan">Vonlkód beolvasása</string>
 
 </resources>
