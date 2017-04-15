@@ -3,6 +3,7 @@ package com.visualstudio.verboben14.bookie;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -11,6 +12,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
+
+import java.io.IOException;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -69,7 +72,20 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this, "Cancelled", Toast.LENGTH_LONG).show();
             } else {
                 Toast.makeText(MainActivity.this, "Scanned: " + result.getContents(), Toast.LENGTH_LONG).show();
-                //TODO call moly.hu api etc...
+
+                String isbnNumber = result.getContents();
+                try {
+                    MolyAPI molyAPI = new MolyAPI();
+
+                    String book = molyAPI.run(MolyAPI.SERACH_ISBN,isbnNumber);
+
+
+
+                } catch (IOException e) {
+                    Log.d("MOLYAPI", e.getMessage());
+                    e.printStackTrace();
+                }
+
             }
         } else {
             super.onActivityResult(requestCode, resultCode, data);

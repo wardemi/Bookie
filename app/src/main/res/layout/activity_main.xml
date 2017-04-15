@@ -25,4 +25,9 @@
         android:layout_height="wrap_content"
         android:text="@string/scan"/>
 
+    <EditText
+        android:id="@+id/book_temp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
 </LinearLayout>
