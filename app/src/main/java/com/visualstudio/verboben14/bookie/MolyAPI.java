@@ -1,20 +1,17 @@
 package com.visualstudio.verboben14.bookie;
 
-import android.util.Log;
-
-import java.io.IOException;
-
-import okhttp3.Call;
-import okhttp3.Callback;
 import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.Response;
+import okhttp3.logging.HttpLoggingInterceptor;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
  * Created by zsoltdemjan on 2017. 04. 15..
  *
  * https://moly.hu/api/books.json?q=vándorünnep&key=515018eae40f203e53948dc40109ca91
  * https://moly.hu/api/book_by_isbn.json?q=963825419X&key=515018eae40f203e53948dc40109ca91
+ *
+ * https://moly.hu/api/book/15331.json?key=515018eae40f203e53948dc40109ca91
  */
 
 public class MolyAPI {
@@ -23,36 +20,31 @@ public class MolyAPI {
     private static String KEY = "&key="+API_KEY;
     public static String SERACH_TITLE = "books.json?q=";
     public static String SERACH_ISBN = "book_by_isbn.json?q=";
+    public static String SERACH_BOOK_ID = "book/";
+    public static String SERACH_BOOK_ID_END = ".json?key=";
 
-    private String resultString = "";
-    private static String LOG_TAG = "MolyAPI";
-
-    OkHttpClient client = new OkHttpClient();
-
-    String run(String method,String search) throws IOException {
+    public static String TAG = "MolyApi";
 
 
-        String searchURL = BASE_URL+method+search+KEY;
-        Log.d(LOG_TAG, "url:" + searchURL);
+    private OkHttpClient mClient;
 
-        Request request = new Request.Builder()
-                .url(searchURL)
+    private String mResult;
+
+    private static Retrofit retrofit = null;
+
+    static Retrofit getClient() {
+
+        HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
+        interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+        OkHttpClient client = new OkHttpClient.Builder().addInterceptor(interceptor).build();
+
+
+        retrofit = new Retrofit.Builder()
+                .baseUrl(BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .client(client)
                 .build();
 
-        client.newCall(request).enqueue(new Callback() {
-            @Override
-            public void onFailure(Call call, IOException e) {
-                Log.e(LOG_TAG, e.toString());
-            }
-
-            @Override
-            public void onResponse(Call call, Response response) throws IOException {
-                Log.w(LOG_TAG, response.body().string());
-                Log.i(LOG_TAG, response.toString());
-                resultString = response.body().string();
-            }
-        });
-
-        return resultString;
+        return retrofit;
     }
 }
