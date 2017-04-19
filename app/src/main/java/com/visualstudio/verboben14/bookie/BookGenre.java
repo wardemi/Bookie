@@ -26,7 +26,7 @@ public enum BookGenre {
 
 
     private String value;
-    private BookGenre(String value)
+    BookGenre(String value)
     {
         this.value = value;
     }

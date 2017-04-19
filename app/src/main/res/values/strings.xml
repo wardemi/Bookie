@@ -13,4 +13,13 @@
     <string name="sign_out">Kilépés</string>
     <string name="google_fail_connect">Google Nem Kommunikál</string>
 
+    <string name="order_fragment_title">Rendezés</string>
+    <string name="book_list_activity_title">My Books</string>
+
+    <string name="order_by_name">Név szerint</string>
+    <string name="order_by_fav">Kedvencek szerint</string>
+    <string name="order_by_author">Író szerint</string>
+    <string name="order_by_save_time">Feltöltés dátuma</string>
+
+    <string name="options_fragment_sign_out">Kilépés</string>
 </resources>

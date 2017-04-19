@@ -82,7 +82,7 @@ public class Book {
     public void removeCategory(BookGenre bookGenre)
     {
         int i = 0;
-        while(i < this.categories.size() && categories.get(i).getValue() != bookGenre.getValue())
+        while(i < this.categories.size() && !categories.get(i).getValue().equals(bookGenre.getValue()))
         {
             i++;
         }
