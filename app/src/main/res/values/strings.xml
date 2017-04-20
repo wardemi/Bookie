@@ -12,5 +12,15 @@
     <string name="auth_success">Sikeres belépés</string>
     <string name="sign_out">Kilépés</string>
     <string name="google_fail_connect">Google Nem Kommunikál</string>
+    <string name="book_details_title">Cím:</string>
+    <string name="book_details_author">Szerző:</string>
+    <string name="book_details_category">Kategória:</string>
+    <string name="book_details_isbn">ISBN:</string>
+    <string name="book_details_publisher">Kiadó:</string>
+    <string name="book_details_year">Kiadás éve:</string>
+    <string name="book_details_page">Oldalszám:</string>
+    <string name="book_details_lang">Nyelv:</string>
+    <string name="book_details_weight">Súly:</string>
+
 
 </resources>
