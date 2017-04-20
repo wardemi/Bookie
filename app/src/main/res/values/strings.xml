@@ -21,6 +21,16 @@
     <string name="order_by_fav">Kedvencek szerint</string>
     <string name="order_by_author">Író szerint</string>
     <string name="order_by_save_time">Feltöltés dátuma</string>
+    <string name="book_details_title">Cím:</string>
+    <string name="book_details_author">Szerző:</string>
+    <string name="book_details_category">Kategória:</string>
+    <string name="book_details_isbn">ISBN:</string>
+    <string name="book_details_publisher">Kiadó:</string>
+    <string name="book_details_year">Kiadás éve:</string>
+    <string name="book_details_page">Oldalszám:</string>
+    <string name="book_details_lang">Nyelv:</string>
+    <string name="book_details_weight">Súly:</string>
+
 
     <string name="options_fragment_sign_out">Kilépés</string>
 </resources>
