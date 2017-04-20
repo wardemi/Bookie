@@ -25,7 +25,6 @@
             android:label="@string/login_title"></activity>
         <activity android:name=".BookListActivity"
             android:label="@string/book_list_activity_title"></activity>
-        <activity android:name=".LoginActivity"></activity>
         <activity android:name=".BookDetails"></activity>
     </application>
 
