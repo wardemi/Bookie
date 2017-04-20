@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#b2fac5"
+    tools:context="com.visualstudio.verboben14.bookie.BookDetails">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_margin="10dp">
+        <android.support.v7.widget.AppCompatImageView
+            android:layout_width="130dp"
+            android:layout_height="match_parent"
+            android:id="@+id/bookCover"/>
+        <android.support.v7.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/book_details_title"
+            android:id="@+id/title"
+            android:textSize="20dp"
+            android:layout_toRightOf="@+id/bookCover"/>
+        <android.support.v7.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="A könyv címe"
+            android:id="@+id/bookTitle"
+            android:textSize="20dp"
+            android:layout_below="@+id/title"
+            android:layout_toRightOf="@+id/bookCover"/>
+        <android.support.v7.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/book_details_author"
+            android:id="@+id/author"
+            android:textSize="20dp"
+            android:layout_below="@+id/bookTitle"
+            android:layout_toRightOf="@+id/bookCover"/>
+        <android.support.v7.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="A könyv szerzője"
+            android:id="@+id/bookAuthor"
+            android:textSize="20dp"
+            android:layout_below="@+id/author"
+            android:layout_toRightOf="@+id/bookCover"/>
+        <android.support.v7.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/book_details_category"
+            android:id="@+id/category"
+            android:textSize="20dp"
+            android:layout_below="@+id/bookAuthor"
+            android:layout_toRightOf="@+id/bookCover"/>
+        <android.support.v7.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="A könyv kategóriája"
+            android:id="@+id/bookCategory"
+            android:textSize="20dp"
+            android:layout_below="@+id/category"
+            android:layout_toRightOf="@+id/bookCover"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_margin="10dp">
+
+        <android.support.v7.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/book_details_isbn"
+            android:id="@+id/isbn"
+            android:textSize="18dp"/>
+        <android.support.v7.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="A könyv ISBN száma"
+            android:id="@+id/bookIsbn"
+            android:layout_toEndOf="@+id/isbn"
+            android:layout_toRightOf="@+id/isbn"
+            android:textSize="18dp"/>
+        <android.support.v7.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/book_details_year"
+            android:id="@+id/year"
+            android:layout_below="@+id/isbn"
+            android:textSize="18dp"/>
+        <android.support.v7.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="A könyv kiadásának éve"
+            android:id="@+id/bookYear"
+            android:layout_below="@+id/bookIsbn"
+            android:layout_toEndOf="@+id/year"
+            android:layout_toRightOf="@+id/year"
+            android:textSize="18dp"/>
+        <android.support.v7.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/book_details_publisher"
+            android:id="@+id/publisher"
+            android:layout_below="@+id/year"
+            android:textSize="18dp"/>
+        <android.support.v7.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="A könyv kiadója"
+            android:id="@+id/bookPublisher"
+            android:layout_below="@+id/bookYear"
+            android:layout_toEndOf="@+id/publisher"
+            android:layout_toRightOf="@+id/publisher"
+            android:textSize="18dp"/>
+        <android.support.v7.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/book_details_page"
+            android:id="@+id/page"
+            android:layout_below="@+id/publisher"
+            android:textSize="18dp"/>
+        <android.support.v7.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="A könyv oldalainak száma"
+            android:id="@+id/bookPage"
+            android:layout_below="@+id/bookPublisher"
+            android:layout_toEndOf="@+id/page"
+            android:layout_toRightOf="@+id/page"
+            android:textSize="18dp"/>
+        <android.support.v7.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/book_details_lang"
+            android:id="@+id/lang"
+            android:layout_below="@+id/page"
+            android:textSize="18dp"/>
+        <android.support.v7.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="A könyv nyelve"
+            android:id="@+id/bookLang"
+            android:layout_below="@+id/bookPage"
+            android:layout_toEndOf="@+id/lang"
+            android:layout_toRightOf="@+id/lang"
+            android:textSize="18dp"/>
+        <android.support.v7.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/book_details_weight"
+            android:id="@+id/weight"
+            android:layout_below="@+id/lang"
+            android:textSize="18dp"/>
+        <android.support.v7.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="A könyv súlya"
+            android:id="@+id/bookWeight"
+            android:layout_below="@+id/bookLang"
+            android:layout_toEndOf="@+id/weight"
+            android:layout_toRightOf="@+id/weight"
+            android:textSize="18dp"/>
+
+    </RelativeLayout>
+
+</LinearLayout>
