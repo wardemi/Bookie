@@ -1,7 +1,7 @@
 package com.visualstudio.verboben14.bookie;
 
+import com.visualstudio.verboben14.bookie.Model.BookMoly;
 import com.visualstudio.verboben14.bookie.Model.BookMolyResponse;
-import com.visualstudio.verboben14.bookie.Model.BookPreview;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
@@ -27,7 +27,7 @@ interface MolyApiInterface {
      * @return
      */
     @GET("books.json")
-    Call<BookPreview> getBookByTitle(@Query("q") String title, @Query("key") String apiKey);
+    Call<BookMoly> getBookByTitle(@Query("q") String title, @Query("key") String apiKey);
 
 
     /**
@@ -37,7 +37,7 @@ interface MolyApiInterface {
      * @return
      */
     @GET("book_by_isbn.json")
-    Call<BookPreview> getBookByIsbn(@Query("q") String isbn, @Query("key") String apiKey);
+    Call<BookMoly> getBookByIsbn(@Query("q") String isbn, @Query("key") String apiKey);
 
     /**
      * Get book by Id
