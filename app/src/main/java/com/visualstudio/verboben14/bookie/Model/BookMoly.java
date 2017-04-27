@@ -1,6 +1,11 @@
 package com.visualstudio.verboben14.bookie.Model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.gson.annotations.SerializedName;
+
+import java.io.Serializable;
 
 /**
  * Created by zsoltdemjan on 2017. 04. 18..
@@ -56,7 +61,7 @@ import com.google.gson.annotations.SerializedName;
  */
 
 
-public class BookMoly {
+public class BookMoly implements Parcelable {
     @SerializedName("id")
     private long mId;
 
@@ -86,6 +91,15 @@ public class BookMoly {
         mDescription = description;
         mUrl = url;
         mLikeAvg = likeAvg;
+    }
+
+    protected BookMoly (Parcel in) {
+        mId = in.readLong();
+        mTitle = in.readString();
+        mCover = in.readString();
+        mDescription = in.readString();
+        mUrl = in.readString();
+        mLikeAvg = in.readFloat();
     }
 
     public long getId() {
@@ -151,4 +165,33 @@ public class BookMoly {
     public void setLikeAvg(Float likeAvg) {
         mLikeAvg = likeAvg;
     }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeLong(mId);
+        dest.writeString(mAuthor);
+        dest.writeString(mTitle);
+        dest.writeString(mCover);
+        dest.writeString(mDescription);
+        dest.writeString(mIsbn);
+        dest.writeString(mUrl);
+        dest.writeFloat(mLikeAvg);
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    public static final Creator<BookMoly> CREATOR = new Creator<BookMoly>() {
+        @Override
+        public BookMoly createFromParcel(Parcel in) {
+            return new BookMoly(in);
+        }
+
+        @Override
+        public BookMoly[] newArray(int size) {
+            return new BookMoly[size];
+        }
+    };
 }
