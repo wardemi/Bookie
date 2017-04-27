@@ -13,7 +13,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         >
-        <activity android:name=".MainActivity">
+        <activity android:name=".BookListActivity"
+            android:label="@string/book_list_activity_title">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -23,8 +24,6 @@
         <activity
             android:name=".LoginActivity"
             android:label="@string/login_title"></activity>
-        <activity android:name=".BookListActivity"
-            android:label="@string/book_list_activity_title"></activity>
         <activity android:name=".BookDetails"></activity>
     </application>
 

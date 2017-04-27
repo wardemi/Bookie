@@ -31,6 +31,9 @@
     <string name="book_details_lang">Nyelv:</string>
     <string name="book_details_weight">Súly:</string>
 
+    <string name="book_list_button_add_book">Hozzáadás</string>
+    <string name="book_list_button_camera">ISDN Beolvasás</string>
+    <string name="book_list_button_order">Rendezés</string>
 
     <string name="options_fragment_sign_out">Kilépés</string>
 </resources>

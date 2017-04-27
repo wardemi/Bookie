@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        goToLogin = new Intent(this, LoginActivity.class);
+        /*goToLogin = new Intent(this, LoginActivity.class);
 
         final FirebaseUser user  = FirebaseAuth.getInstance().getCurrentUser();
         if(user == null) {
@@ -68,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
                 integrator.initiateScan();
 
             }
-        });
+        });*/
     }
 
     @Override

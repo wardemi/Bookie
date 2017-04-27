@@ -4,14 +4,40 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="com.visualstudio.verboben14.bookie.BookListActivity">
 
     <ListView
-        android:id="@+id/news_listview"
+        android:id="@+id/books_listview"
+        android:layout_weight="5"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
         android:background="@color/colorBackground"/>
 
+    <android.support.v7.widget.ActionMenuView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/addButton"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/colorBackground"
+            android:hint="@string/book_list_button_add_book"/>
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/scanButton"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/colorBackground"
+            android:hint="@string/book_list_button_camera"/>
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/orderButton"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/colorBackground"
+            android:hint="@string/book_list_button_order"/>
+    </android.support.v7.widget.ActionMenuView>
 
 
 </LinearLayout>
