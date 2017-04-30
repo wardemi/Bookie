@@ -7,26 +7,42 @@
     tools:context="com.visualstudio.verboben14.bookie.MainActivity">
 
 
-    <TextView
-        android:id="@+id/logo"
+    <LinearLayout
+        android:id="@+id/logoContainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="20sp"
-        android:textAlignment="center"
-        android:text="@string/app_name"/>
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/logo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="30sp"
+            android:textAlignment="center"
+            android:text="@string/app_name"/>
+
+        <TextView
+            android:id="@+id/networkStatus"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"
+            android:textAlignment="center"
+            android:layout_marginBottom="@dimen/activity_horizontal_margin"
+            android:textColor="#760505"
+            android:visibility="gone"
+            android:text="@string/not_internet"/>
+    </LinearLayout>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/book_list_recycler"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/logo"
         android:layout_above="@+id/scanBtn"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
         android:clipToPadding="false"
         android:padding="16dp"
-        />
+        android:layout_below="@+id/logoContainer"/>
 
 
     <android.support.v7.widget.AppCompatButton

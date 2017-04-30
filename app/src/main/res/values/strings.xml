@@ -42,4 +42,5 @@
 
 
     <string name="options_fragment_sign_out">Kilépés</string>
+    <string name="not_internet">Nincs internet elérés</string>
 </resources>

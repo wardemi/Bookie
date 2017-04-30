@@ -1,12 +1,8 @@
 package com.visualstudio.verboben14.bookie;
 
-import android.content.Context;
 import android.content.Intent;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -18,8 +14,6 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.visualstudio.verboben14.bookie.Model.BookMoly;
@@ -29,10 +23,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class AddBookActivity extends AppCompatActivity {
-
-    private Intent mRedirectIntent;
-    private String mUid;
+public class AddBookActivity extends BaseActivity {
 
     private String mIsbn;
     private MolyApiInterface molyApiService;
@@ -58,8 +49,8 @@ public class AddBookActivity extends AppCompatActivity {
 
         //Check available Network
         if(!isNetworkAvailable()) {
-             Toast.makeText(AddBookActivity.this, "Szükséges internet elérés",
-                             Toast.LENGTH_SHORT).show();
+            Toast.makeText(AddBookActivity.this, "Szükséges internet elérés",
+                    Toast.LENGTH_SHORT).show();
 
             mRedirectIntent = new Intent(this, MainActivity.class);
             startActivity(mRedirectIntent);
@@ -67,15 +58,7 @@ public class AddBookActivity extends AppCompatActivity {
         }
 
         //Init Firebase Auth
-        mRedirectIntent = new Intent(this, LoginActivity.class);
-        final FirebaseUser user  = FirebaseAuth.getInstance().getCurrentUser();
-        if(user == null) {
-            startActivity(mRedirectIntent);
-        } else {
-            mUid = user.getUid();
-        }
-
-
+        isLogged();
 
         //INIT VIEW ELEMENTS
         isbn = (TextView) findViewById(R.id.isbn);
@@ -121,9 +104,9 @@ public class AddBookActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String key = mBookReference.push().getKey();
-                exampleBook.setUid(mUid);
+                exampleBook.setUid(mUser.getUid());
                 exampleBook.setBid(key);
-                mBookReference.child("users/"+mUid+"/books/"+key).setValue(exampleBook).addOnCompleteListener(new OnCompleteListener<Void>() {
+                mBookReference.child("users/"+mUser.getUid()+"/books/"+key).setValue(exampleBook).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         Toast.makeText(AddBookActivity.this, "Sikeresen hozzá lett adva a könyv a listájához",
@@ -143,7 +126,6 @@ public class AddBookActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<BookMoly> call, Response<BookMoly> response) {
                 Log.d(MolyAPI.TAG,response.code()+"");
-
                 exampleBook = response.body();
                 exampleBook.setIsbn(isbnNumber);
                 extendMolyBook();
@@ -155,8 +137,6 @@ public class AddBookActivity extends AppCompatActivity {
                 loadingFail();
                 Toast.makeText(AddBookActivity.this, "Nincs találat a könyvre",
                         Toast.LENGTH_SHORT).show();
-
-
             }
         });
     }
@@ -215,12 +195,5 @@ public class AddBookActivity extends AppCompatActivity {
 
         ImageView imageView = (ImageView) findViewById(R.id.book_cover);
         Glide.with(this).load(exampleBook.getCover()).into(imageView);
-    }
-
-    private boolean isNetworkAvailable() {
-        ConnectivityManager connectivityManager
-                = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
-        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
 }
