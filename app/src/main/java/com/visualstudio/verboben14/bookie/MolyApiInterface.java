@@ -15,11 +15,10 @@ import retrofit2.http.Query;
  * https://moly.hu/api/book_by_isbn.json?q=963825419X&key=515018eae40f203e53948dc40109ca91
  *
  * https://moly.hu/api/book/15331.json?key=515018eae40f203e53948dc40109ca91
+ * 114139
  */
 
 interface MolyApiInterface {
-    static String API_KEY = "515018eae40f203e53948dc40109ca91";
-
     /**
      * Get book by title
      * @param title

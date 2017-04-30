@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.visualstudio.verboben14.bookie.AddBook"
+    tools:context="com.visualstudio.verboben14.bookie.AddBookActivity"
 
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
@@ -47,6 +47,14 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true">
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:id="@+id/book_cover"
+                android:layout_width="70dp"
+                android:layout_height="100dp"/>
+        </LinearLayout>
         <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
                       android:id="@+id/add_title"
                       android:layout_width="match_parent"
@@ -164,19 +172,14 @@
                 android:scrollbars="vertical">
                 <TextView
                     android:id="@+id/bookDescription"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:layout_height="150dp"
                     android:layout_gravity="center_vertical"
-                    android:ellipsize="none"
-                    android:paddingBottom="15dp"
-                    android:paddingTop="15dp"
                     android:text="Sławomir ​Mrożek, a méltán világhírű, és immár a klasszikusok közé sorolható lengyel író elbeszéléseinek második kötetét ajánljuk olvasóink figyelmébe, amely az 1960-1970 között született írásokat tartalmazza.\r\n\r\nA groteszk, az abszurd sajátos eszközeivel torzító tükröt tart elénk a szerző - egy-egy szituáció, komoly gondolat fejtetőre állításával, végletekig feszítésével megmutatja a dolgok fonákját, a világ bonyolult szövedékét. Jóllehet e hosszabb-rövidebb történetek a szocializmus idején íródtak, mit sem veszítettek aktualitásukból: a jellemtelenség, a korrupció, a szervilizmus, a harácsolás, a közöny, az ostobaság, a hazudozás, az embertelenség politikai rendszertől, társadalmi berendezkedéstől függetlenül undorító jelenségek - s szomorúan kell megállapítanunk, hogy a helyzet nemigen javul. Friss és üde voltam, mintha jól kialudtam volna magamat. Az élvezet, amit az alkoholmámornak és önnön becstelenségemnek köszönhettem, s amiért a vezeklés terhét kellett volna viselnem, elevenen és csábítóan élt emlékezetemben, s nem sújtott semmiféle büntetés. Az árva miatt sem éreztem semmiféle lelkifurdalást. Meg kell vallanom, hogy nem szívesen becstelenítettem meg, ugyanis ismerem magamat, és tudom, hogy soha nem menekülhetek mardosó bűntudatom elől. Most azonban nemcsak hogy nem éreztem belső nyugtalanságot, sem undort vagy kellemetlen szájízt, hanem épp ellenkezőleg: alighogy kinyitottam a szemem, máris vidáman, tettre készen néztem körül; hol egy újabb árva, akit megbecsteleníthetnék?"
                     android:textSize="17sp"
-                    android:scrollbars="vertical"
+                    android:scrollbars = "vertical"
                     />
-
             </ScrollView>
-
 
         </LinearLayout>
 
@@ -204,15 +207,62 @@
     </LinearLayout>
 
 
-    <ProgressBar
+    <LinearLayout
         android:id="@+id/Loading"
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical|center_horizontal"
-        android:visibility="gone"
         android:indeterminate="true"
         android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:orientation="vertical"
+
+        android:visibility="gone"
+        >
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical|center_horizontal"
+            android:indeterminate="true"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/wait_data"
+            android:textAlignment="center"
+            android:textSize="20sp"
+            android:layout_marginTop="10dp"
+            />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/fail_result"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:orientation="vertical"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        >
+
+        <TextView
+            android:textSize="20sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/not_result"/>
+        <Button
+            android:id="@+id/fail_back_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:text="@string/back_btn"
+            />
+    </LinearLayout>
 
 </RelativeLayout>
 

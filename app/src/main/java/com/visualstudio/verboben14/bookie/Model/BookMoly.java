@@ -26,6 +26,12 @@ public class BookMoly {
     @SerializedName("like_average")
     private Float mLikeAvg;
 
+    private String uid;
+
+    private String bid;
+
+    private int read;
+
     public BookMoly(long id, String title, String cover, String description, String url, Float likeAvg) {
         mId = id;
         mTitle = title;
@@ -35,7 +41,9 @@ public class BookMoly {
         mLikeAvg = likeAvg;
     }
 
-    public BookMoly() {}
+    public BookMoly() {
+        // Needed for Firebase
+    }
 
     public long getId() {
         return mId;
@@ -99,5 +107,29 @@ public class BookMoly {
 
     public void setLikeAvg(Float likeAvg) {
         mLikeAvg = likeAvg;
+    }
+
+    public String getUid() {
+        return uid;
+    }
+
+    public void setUid(String uid) {
+        this.uid = uid;
+    }
+
+    public String getBid() {
+        return bid;
+    }
+
+    public void setBid(String bid) {
+        this.bid = bid;
+    }
+
+    public int getRead() {
+        return read;
+    }
+
+    public void setRead(int read) {
+        this.read = read;
     }
 }

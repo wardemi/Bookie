@@ -15,20 +15,10 @@ import retrofit2.converter.gson.GsonConverterFactory;
  */
 
 public class MolyAPI {
-    private static String API_KEY = "515018eae40f203e53948dc40109ca91";
+    private final static String API_KEY = "515018eae40f203e53948dc40109ca91";
     private static String BASE_URL = "https://moly.hu/api/";
-    private static String KEY = "&key="+API_KEY;
-    public static String SERACH_TITLE = "books.json?q=";
-    public static String SERACH_ISBN = "book_by_isbn.json?q=";
-    public static String SERACH_BOOK_ID = "book/";
-    public static String SERACH_BOOK_ID_END = ".json?key=";
 
     public static String TAG = "MolyApi";
-
-
-    private OkHttpClient mClient;
-
-    private String mResult;
 
     private static Retrofit retrofit = null;
 
@@ -38,7 +28,6 @@ public class MolyAPI {
         interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
         OkHttpClient client = new OkHttpClient.Builder().addInterceptor(interceptor).build();
 
-
         retrofit = new Retrofit.Builder()
                 .baseUrl(BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
@@ -46,5 +35,9 @@ public class MolyAPI {
                 .build();
 
         return retrofit;
+    }
+
+    public final static String getApiKey() {
+        return API_KEY;
     }
 }

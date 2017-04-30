@@ -20,5 +20,7 @@
     <string name="book_description">Leírás</string>
     <string name="add_book_btn">Új könyv hozzáadása</string>
     <string name="back_btn">vissza</string>
+    <string name="not_result">Sajnos nincs találat. Próbálja meg egy másik könyvvel.</string>
+    <string name="wait_data">Adatok betöltése...</string>
 
 </resources>

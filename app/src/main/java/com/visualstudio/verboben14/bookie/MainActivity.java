@@ -1,20 +1,34 @@
 package com.visualstudio.verboben14.bookie;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
+import com.visualstudio.verboben14.bookie.Model.BookMoly;
 
 public class MainActivity extends AppCompatActivity {
 
     private Intent goToLogin;
+    private DatabaseReference mRef;
+    private DatabaseReference mBookRef;
+
+    private RecyclerView mBookView;
+    private LinearLayoutManager mBookList;
+    private FirebaseRecyclerAdapter<BookMoly, BookHolder> mAdapter;
+    private Context mContext;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +46,15 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(MainActivity.this, "Üdv "+email.toString(),
                     Toast.LENGTH_SHORT).show();
         }
+
+
+        mBookList = new LinearLayoutManager(this);
+        mBookList.setReverseLayout(false);
+
+
+        mBookView = (RecyclerView) findViewById(R.id.book_list_recycler);
+        mBookView.setHasFixedSize(false);
+        mBookView.setLayoutManager(mBookList);
 
         Button signOutBtn = (Button) findViewById(R.id.singOutBtn);
         signOutBtn.setOnClickListener(new View.OnClickListener() {
@@ -54,7 +77,15 @@ public class MainActivity extends AppCompatActivity {
                 integrator.initiateScan();
             }
         });
+
+        mRef = FirebaseDatabase.getInstance().getReference();
+        mBookRef = mRef.child("users/"+user.getUid()+"/books/");
+
+        mContext = getApplicationContext();
+        attachRecyclerViewAdapter();
     }
+
+
 
     /**
      * Get zxing result
@@ -67,7 +98,7 @@ public class MainActivity extends AppCompatActivity {
         IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
 
         //TODO test ISBN read and redirect
-        Intent intent = new Intent(this, AddBook.class);
+        Intent intent = new Intent(this, AddBookActivity.class);
 
         if(result != null) {
             if(result.getContents() == null) {
@@ -85,5 +116,23 @@ public class MainActivity extends AppCompatActivity {
         } else {
             super.onActivityResult(requestCode, resultCode, data);
         }
+    }
+
+    private void attachRecyclerViewAdapter() {
+        mAdapter = new BookAdapter(BookMoly.class, R.layout.book_list, BookHolder.class, mBookRef,mContext);
+        // Scroll to bottom on new messages
+        mAdapter.registerAdapterDataObserver(new RecyclerView.AdapterDataObserver() {
+            @Override
+            public void onItemRangeInserted(int positionStart, int itemCount) {
+                mBookList.smoothScrollToPosition(mBookView, null, mAdapter.getItemCount());
+            }
+        });
+        mBookView.setAdapter(mAdapter);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        mAdapter.cleanup();
     }
 }
