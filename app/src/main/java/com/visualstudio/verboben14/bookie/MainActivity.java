@@ -1,15 +1,19 @@
 package com.visualstudio.verboben14.bookie;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.internal.BottomNavigationItemView;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.RecyclerView;
+import android.text.InputType;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -72,6 +76,39 @@ public class MainActivity extends BaseActivity {
                         IntentIntegrator integrator = new IntentIntegrator(MainActivity.this);
                         integrator.setOrientationLocked(false);
                         integrator.initiateScan();
+                    }
+                });
+
+                BottomNavigationItemView addButton = (BottomNavigationItemView) findViewById(R.id.addButton);
+                addButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+                        builder.setTitle("ISBN kód");
+
+                        // Set up the input
+                        final EditText input = new EditText(MainActivity.this);
+                        // Specify the type of input expected; this, for example, sets the input as a password, and will mask the text
+                        input.setInputType(InputType.TYPE_CLASS_TEXT);
+                        builder.setView(input);
+
+                        // Set up the buttons
+                        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                Intent addBookIntent = new Intent(MainActivity.this, AddBookActivity.class);
+                                addBookIntent.putExtra("isbn", input.getText().toString());
+                                startActivity(addBookIntent);
+                            }
+                        });
+                        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.cancel();
+                            }
+                });
+
+                        builder.show();
                     }
                 });
 
