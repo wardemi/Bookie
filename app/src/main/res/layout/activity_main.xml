@@ -5,7 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.visualstudio.verboben14.bookie.MainActivity">
+    tools:context="com.visualstudio.verboben14.bookie.MainActivity"
+    android:background="@color/colorBackground">
 
 
     <LinearLayout
@@ -13,14 +14,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
-
-        <TextView
-            android:id="@+id/logo"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="30sp"
-            android:textAlignment="center"
-            android:text="@string/app_name"/>
 
         <TextView
             android:id="@+id/networkStatus"

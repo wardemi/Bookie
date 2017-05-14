@@ -41,4 +41,6 @@ public class BookAdapter extends FirebaseRecyclerAdapter<BookMoly,BookHolder> {
         });
     }
 
+
+
 }
