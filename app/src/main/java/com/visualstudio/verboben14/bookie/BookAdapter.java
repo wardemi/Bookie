@@ -24,7 +24,7 @@ public class BookAdapter extends FirebaseRecyclerAdapter<BookMoly,BookHolder> {
     }
 
     @Override
-    protected void populateViewHolder(BookHolder viewHolder, final BookMoly model, final int position) {
+    protected void populateViewHolder(final BookHolder viewHolder, final BookMoly model, final int position) {
         viewHolder.setBookTitle(model.getTitle());
         viewHolder.setBookAuthor(model.getAuthor());
         Glide.with(context).load(model.getCover()).into(viewHolder.mCover);
@@ -32,10 +32,11 @@ public class BookAdapter extends FirebaseRecyclerAdapter<BookMoly,BookHolder> {
         viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(context, getRef(position).getKey(),
-                        Toast.LENGTH_SHORT).show();
-                Intent bookDetailsIntent = new Intent(MainActivity.this, BookDetails.class);
-                //TODO getKey átadása másik ablaknak ahol lekérdezhető a többi adat + máveletvégzések
+                Intent addBookIntent = new Intent(context, AddBookActivity.class);
+                addBookIntent.putExtra("isbn",model.getIsbn());
+                addBookIntent.putExtra("oldBook",true);
+                addBookIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                context.startActivity(addBookIntent);
             }
         });
     }

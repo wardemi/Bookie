@@ -35,10 +35,14 @@ public class AddBookActivity extends BaseActivity {
     private TextView bookAuthors;
     private TextView bookLikes;
     private TextView bookDescription;
+    private TextView addBookTitle;
+    private TextView titleAttributeName;
 
     private LinearLayout contentLayout;
     private LinearLayout progressBar;
     private LinearLayout failLayout;
+
+    private boolean isOldBook;
 
     private DatabaseReference mBookReference;
 
@@ -66,22 +70,12 @@ public class AddBookActivity extends BaseActivity {
         bookAuthors = (TextView) findViewById(R.id.bookAuthors);
         bookLikes = (TextView) findViewById(R.id.bookLikes);
         bookDescription = (TextView) findViewById(R.id.bookDescription);
+        addBookTitle = (TextView) findViewById(R.id.add_book_title);
+        titleAttributeName = (TextView) findViewById(R.id.title_attribute_name);
 
         contentLayout = (LinearLayout)findViewById(R.id.add_content_layout);
         progressBar = (LinearLayout) findViewById(R.id.Loading);
         failLayout = (LinearLayout) findViewById(R.id.fail_result);
-
-        // Get intent extras
-        Bundle extras = getIntent().getExtras();
-        mIsbn = extras.getString("isbn");
-        isbn.setText(mIsbn);
-
-        loadingStart();
-        getMolyPreview(mIsbn);
-
-        //Init FireBase Database
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        mBookReference = database.getReference();
 
         Button backBtn = (Button) findViewById(R.id.back_btn);
         backBtn.setOnClickListener(new View.OnClickListener() {
@@ -116,6 +110,27 @@ public class AddBookActivity extends BaseActivity {
                 });
             }
         });
+
+        // Get intent extras
+        Bundle extras = getIntent().getExtras();
+        isOldBook = extras.getBoolean("oldBook", false);
+        if(isOldBook)
+        {
+            addBtn.setVisibility(View.INVISIBLE);
+            bookTitle.setVisibility(View.INVISIBLE);
+            titleAttributeName.setVisibility(View.INVISIBLE);
+        }
+        mIsbn = extras.getString("isbn");
+        isbn.setText(mIsbn);
+
+        loadingStart();
+        getMolyPreview(mIsbn);
+
+        //Init FireBase Database
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        mBookReference = database.getReference();
+
+
     }
 
 
@@ -190,7 +205,9 @@ public class AddBookActivity extends BaseActivity {
         bookDescription.setText(exampleBook.getDescription());
         bookLikes.setText(exampleBook.getLikeAvg().toString());
         bookTitle.setText(exampleBook.getTitle());
-
+        if(isOldBook) {
+            addBookTitle.setText(exampleBook.getTitle());
+        }
         loadingEnd();
 
         ImageView imageView = (ImageView) findViewById(R.id.book_cover);

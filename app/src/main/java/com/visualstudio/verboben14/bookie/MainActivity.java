@@ -1,15 +1,19 @@
 package com.visualstudio.verboben14.bookie;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.internal.BottomNavigationItemView;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.RecyclerView;
+import android.text.InputType;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -55,7 +59,7 @@ public class MainActivity extends BaseActivity {
                 mBookView.setLayoutManager(mBookList);
 
                 //TODO Signout button hozzáadása
-                /*BottomNavigationItemView signOutBtn = (BottomNavigationItemView) findViewById(R.id.orderButton);
+                BottomNavigationItemView signOutBtn = (BottomNavigationItemView) findViewById(R.id.orderButton);
                 signOutBtn.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -63,24 +67,6 @@ public class MainActivity extends BaseActivity {
                         Toast.makeText(MainActivity.this, "Kilépés ", Toast.LENGTH_SHORT).show();
                         mRedirectIntent = new Intent(MainActivity.this, LoginActivity.class);
                         startActivity(mRedirectIntent);
-                    }
-                });*/
-
-                final BottomNavigationItemView orderButton = (BottomNavigationItemView) findViewById(R.id.orderButton);
-                orderButton.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        PopupMenu popupMenu = new PopupMenu(MainActivity.this, orderButton);
-                        popupMenu.getMenuInflater().inflate(R.menu.order_popup_menu, popupMenu.getMenu());
-
-                        popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
-                            @Override
-                            public boolean onMenuItemClick(MenuItem item) {
-                                Toast.makeText(MainActivity.this, "Rendezés: " + item.getTitle(), Toast.LENGTH_SHORT).show();
-                                return true;
-                            }
-                        });
-                        popupMenu.show();
                     }
                 });
 
@@ -91,6 +77,39 @@ public class MainActivity extends BaseActivity {
                         IntentIntegrator integrator = new IntentIntegrator(MainActivity.this);
                         integrator.setOrientationLocked(false);
                         integrator.initiateScan();
+                    }
+                });
+
+                BottomNavigationItemView addButton = (BottomNavigationItemView) findViewById(R.id.addButton);
+                addButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+                        builder.setTitle("ISBN kód");
+
+                        // Set up the input
+                        final EditText input = new EditText(MainActivity.this);
+                        // Specify the type of input expected; this, for example, sets the input as a password, and will mask the text
+                        input.setInputType(InputType.TYPE_CLASS_TEXT);
+                        builder.setView(input);
+
+                        // Set up the buttons
+                        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                Intent addBookIntent = new Intent(MainActivity.this, AddBookActivity.class);
+                                addBookIntent.putExtra("isbn", input.getText().toString());
+                                startActivity(addBookIntent);
+                            }
+                        });
+                        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.cancel();
+                            }
+                        });
+
+                        builder.show();
                     }
                 });
 
