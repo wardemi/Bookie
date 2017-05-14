@@ -1,6 +1,7 @@
 package com.visualstudio.verboben14.bookie;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.View;
 import android.widget.Toast;
 
@@ -33,7 +34,7 @@ public class BookAdapter extends FirebaseRecyclerAdapter<BookMoly,BookHolder> {
             public void onClick(View v) {
                 Toast.makeText(context, getRef(position).getKey(),
                         Toast.LENGTH_SHORT).show();
-
+                Intent bookDetailsIntent = new Intent(MainActivity.this, BookDetails.class);
                 //TODO getKey átadása másik ablaknak ahol lekérdezhető a többi adat + máveletvégzések
             }
         });

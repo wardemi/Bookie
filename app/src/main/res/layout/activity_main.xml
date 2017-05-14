@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -33,11 +34,23 @@
             android:text="@string/not_internet"/>
     </LinearLayout>
 
+    <android.support.design.widget.BottomNavigationView
+        android:id="@+id/main_bottom_menu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/colorPrimary"
+        app:itemIconTint="#FFF"
+        app:itemTextColor="#FFF"
+        app:menu="@menu/bottom_navigation_menu"
+        >
+    </android.support.design.widget.BottomNavigationView>
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/book_list_recycler"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/scanBtn"
+        android:layout_above="@id/main_bottom_menu"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:clipToPadding="false"
@@ -45,7 +58,7 @@
         android:layout_below="@+id/logoContainer"/>
 
 
-    <android.support.v7.widget.AppCompatButton
+   <!-- <android.support.v7.widget.AppCompatButton
         android:id="@+id/scanBtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -61,6 +74,8 @@
         android:text="@string/sign_out"
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
-        />
+        />-->
+
+
 
 </RelativeLayout>

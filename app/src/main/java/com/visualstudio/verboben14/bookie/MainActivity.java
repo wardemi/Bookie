@@ -3,8 +3,11 @@ package com.visualstudio.verboben14.bookie;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.internal.BottomNavigationItemView;
 import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.RecyclerView;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -51,18 +54,37 @@ public class MainActivity extends BaseActivity {
                 mBookView.setHasFixedSize(false);
                 mBookView.setLayoutManager(mBookList);
 
-                Button signOutBtn = (Button) findViewById(R.id.singOutBtn);
+                //TODO Signout button hozzáadása
+                /*BottomNavigationItemView signOutBtn = (BottomNavigationItemView) findViewById(R.id.orderButton);
                 signOutBtn.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         FirebaseAuth.getInstance().signOut();
-                        Toast.makeText(MainActivity.this, "Kiléps ", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.this, "Kilépés ", Toast.LENGTH_SHORT).show();
                         mRedirectIntent = new Intent(MainActivity.this, LoginActivity.class);
                         startActivity(mRedirectIntent);
                     }
+                });*/
+
+                final BottomNavigationItemView orderButton = (BottomNavigationItemView) findViewById(R.id.orderButton);
+                orderButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        PopupMenu popupMenu = new PopupMenu(MainActivity.this, orderButton);
+                        popupMenu.getMenuInflater().inflate(R.menu.order_popup_menu, popupMenu.getMenu());
+
+                        popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                            @Override
+                            public boolean onMenuItemClick(MenuItem item) {
+                                Toast.makeText(MainActivity.this, "Rendezés: " + item.getTitle(), Toast.LENGTH_SHORT).show();
+                                return true;
+                            }
+                        });
+                        popupMenu.show();
+                    }
                 });
 
-                Button scanBtn = (Button) findViewById(R.id.scanBtn);
+                BottomNavigationItemView scanBtn = (BottomNavigationItemView) findViewById(R.id.scanButton);
                 scanBtn.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
