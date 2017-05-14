@@ -12,14 +12,14 @@
     <string name="auth_success">Sikeres belépés</string>
     <string name="sign_out">Kilépés</string>
     <string name="google_fail_connect">Google Nem Kommunikál</string>
-    <string name="scan">Vonlkód beolvasása</string>
+    <string name="scan">Vonalkód beolvasása</string>
     <string name="add_book">Új könyv</string>
     <string name="book_title">Cím</string>
     <string name="book_author">Író</string>
     <string name="book_likes">Értékelés</string>
     <string name="book_description">Leírás</string>
     <string name="add_book_btn">Új könyv hozzáadása</string>
-    <string name="back_btn">vissza</string>
+    <string name="back_btn">Vissza</string>
     <string name="not_result">Sajnos nincs találat. Próbálja meg egy másik könyvvel.</string>
     <string name="wait_data">Adatok betöltése...</string>
 
@@ -39,7 +39,7 @@
     <string name="book_details_page">Oldalszám:</string>
     <string name="book_details_lang">Nyelv:</string>
     <string name="book_details_weight">Súly:</string>
-
+    <string name="book_details_added_favorites">Hozzáadva a kedvencekhez</string>
 
     <string name="options_fragment_sign_out">Kilépés</string>
     <string name="not_internet">Nincs internet elérés</string>

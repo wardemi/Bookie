@@ -56,7 +56,7 @@ public class MainActivity extends BaseActivity {
                     @Override
                     public void onClick(View v) {
                         FirebaseAuth.getInstance().signOut();
-                        Toast.makeText(MainActivity.this, "Kiléps ", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.this, "Kilépés ", Toast.LENGTH_SHORT).show();
                         mRedirectIntent = new Intent(MainActivity.this, LoginActivity.class);
                         startActivity(mRedirectIntent);
                     }
