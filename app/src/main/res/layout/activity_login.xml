@@ -34,12 +34,16 @@
         android:id="@+id/simpleLoginBtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/login_btn"/>
+        android:text="@string/login_btn"
+        android:background="@color/colorPrimary"
+        android:textColor="#FFF"/>
     <Button
         android:id="@+id/registrationBtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/registration_btn"
+        android:background="@color/colorPrimary"
+        android:textColor="#FFF"
         />
 
     <com.google.android.gms.common.SignInButton

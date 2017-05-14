@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -36,7 +37,7 @@ public class AddBookActivity extends BaseActivity {
     private TextView bookLikes;
     private TextView bookDescription;
     private TextView addBookTitle;
-    private TextView titleAttributeName;
+    private LinearLayout addTitle;
 
     private LinearLayout contentLayout;
     private LinearLayout progressBar;
@@ -71,7 +72,7 @@ public class AddBookActivity extends BaseActivity {
         bookLikes = (TextView) findViewById(R.id.bookLikes);
         bookDescription = (TextView) findViewById(R.id.bookDescription);
         addBookTitle = (TextView) findViewById(R.id.add_book_title);
-        titleAttributeName = (TextView) findViewById(R.id.title_attribute_name);
+        addTitle = (LinearLayout) findViewById(R.id.add_title);
 
         contentLayout = (LinearLayout)findViewById(R.id.add_content_layout);
         progressBar = (LinearLayout) findViewById(R.id.Loading);
@@ -117,8 +118,9 @@ public class AddBookActivity extends BaseActivity {
         if(isOldBook)
         {
             addBtn.setVisibility(View.INVISIBLE);
-            bookTitle.setVisibility(View.INVISIBLE);
-            titleAttributeName.setVisibility(View.INVISIBLE);
+            addBtn.setLayoutParams(new LinearLayout.LayoutParams(0, 0, 0));
+            addTitle.setVisibility(View.INVISIBLE);
+            addTitle.setLayoutParams(new LinearLayout.LayoutParams(0, 0, 0));
         }
         mIsbn = extras.getString("isbn");
         isbn.setText(mIsbn);

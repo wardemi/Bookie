@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorBackground"
+    android:orientation="vertical"
     tools:context="com.visualstudio.verboben14.bookie.AddBookActivity"
 
     android:paddingLeft="@dimen/activity_horizontal_margin"
@@ -14,15 +15,19 @@
     android:paddingBottom="@dimen/activity_vertical_margin">
 
     <RelativeLayout
+        android:layout_weight="1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:orientation="vertical"
         android:id="@+id/add_header_layout">
 
         <ImageView
             android:id="@+id/book_cover"
-            android:layout_width="70dp"
-            android:layout_height="100dp"/>
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:adjustViewBounds="true"
+            android:scaleType="fitCenter"
+            />
 
         <TextView
             android:id="@+id/add_book_title"
@@ -57,7 +62,8 @@
         android:id="@+id/add_content_layout"
         android:layout_below="@id/add_header_layout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="4"
         android:orientation="vertical"
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true">
@@ -162,7 +168,7 @@
             android:id="@+id/add_description"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="6"
+            android:layout_weight="3"
             android:orientation="vertical">
 
             <TextView
@@ -195,22 +201,26 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:orientation="horizontal"
-        android:layout_weight="1"
+        android:layout_weight="1.25"
         >
 
         <Button
             android:id="@+id/add_btn"
             android:layout_width="0dp"
             android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:text="@string/add_book_btn"/>
+            android:layout_height="match_parent"
+            android:text="@string/add_book_btn"
+            android:background="@color/colorPrimary"
+            android:textColor="#FFF"/>
 
         <Button
             android:id="@+id/back_btn"
             android:layout_width="0dp"
             android:layout_weight="1"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@color/colorPrimary"
             android:text="@string/back_btn"
+            android:textColor="#FFF"
             />
     </LinearLayout>
     </LinearLayout>
@@ -271,5 +281,5 @@
             />
     </LinearLayout>
 
-</RelativeLayout>
+</LinearLayout>
 
