@@ -54,8 +54,7 @@ public class MainActivity extends BaseActivity {
                 mBookView.setHasFixedSize(false);
                 mBookView.setLayoutManager(mBookList);
 
-                //TODO Signout button hozzáadása
-                /*BottomNavigationItemView signOutBtn = (BottomNavigationItemView) findViewById(R.id.orderButton);
+                BottomNavigationItemView signOutBtn = (BottomNavigationItemView) findViewById(R.id.signoutButton);
                 signOutBtn.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -63,24 +62,6 @@ public class MainActivity extends BaseActivity {
                         Toast.makeText(MainActivity.this, "Kilépés ", Toast.LENGTH_SHORT).show();
                         mRedirectIntent = new Intent(MainActivity.this, LoginActivity.class);
                         startActivity(mRedirectIntent);
-                    }
-                });*/
-
-                final BottomNavigationItemView orderButton = (BottomNavigationItemView) findViewById(R.id.orderButton);
-                orderButton.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        PopupMenu popupMenu = new PopupMenu(MainActivity.this, orderButton);
-                        popupMenu.getMenuInflater().inflate(R.menu.order_popup_menu, popupMenu.getMenu());
-
-                        popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
-                            @Override
-                            public boolean onMenuItemClick(MenuItem item) {
-                                Toast.makeText(MainActivity.this, "Rendezés: " + item.getTitle(), Toast.LENGTH_SHORT).show();
-                                return true;
-                            }
-                        });
-                        popupMenu.show();
                     }
                 });
 

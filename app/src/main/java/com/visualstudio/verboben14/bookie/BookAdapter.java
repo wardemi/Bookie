@@ -34,7 +34,7 @@ public class BookAdapter extends FirebaseRecyclerAdapter<BookMoly,BookHolder> {
             public void onClick(View v) {
                 Toast.makeText(context, getRef(position).getKey(),
                         Toast.LENGTH_SHORT).show();
-                Intent bookDetailsIntent = new Intent(MainActivity.this, BookDetails.class);
+                //Intent bookDetailsIntent = new Intent(MainActivity.this, BookDetails.class);
                 //TODO getKey átadása másik ablaknak ahol lekérdezhető a többi adat + máveletvégzések
             }
         });

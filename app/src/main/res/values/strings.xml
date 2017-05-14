@@ -42,7 +42,7 @@
 
     <string name="bottom_navigation_button_add_book">Hozzáadás</string>
     <string name="bottom_navigation_button_camera">ISBN Beolvasás</string>
-    <string name="bottom_navigation_button_order">Rendezés</string>
+    <string name="bottom_navigation_button_signout">Kijelentkezés</string>
     <string name="book_details_added_favorites">Hozzáadva a kedvencekhez</string>
 
     <string name="options_fragment_sign_out">Kilépés</string>

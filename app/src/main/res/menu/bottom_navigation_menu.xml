@@ -14,9 +14,9 @@
        />
 
     <item
-        android:id="@+id/orderButton"
-        android:icon="@drawable/ic_order_24dp"
-        android:title="@string/bottom_navigation_button_order"
+        android:id="@+id/signoutButton"
+        android:icon="@drawable/exit_to_app"
+        android:title="@string/bottom_navigation_button_signout"
         />
 
 </menu>
