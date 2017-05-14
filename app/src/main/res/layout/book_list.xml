@@ -29,7 +29,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/add_book"
-            android:textSize="25sp"
+            android:textSize="20sp"
             android:textStyle="bold"
             />
 
@@ -39,7 +39,7 @@
             android:layout_height="wrap_content"
             android:text="@string/auth_reg_failed"
             android:layout_marginTop="5dp"
-            android:textSize="20sp"
+            android:textSize="15sp"
             />
 
     </LinearLayout>
